@@ -3,7 +3,14 @@ import pandas as pd
 import pickle
 import json
 import numpy as np
-from sklearn.preprocessing import StandardScaler, MinMaxScaler, RobustScaler, MaxAbsScaler
+import warnings
+warnings.filterwarnings('ignore')
+
+try:
+    from sklearn.preprocessing import StandardScaler, MinMaxScaler, RobustScaler, MaxAbsScaler
+except ImportError as e:
+    st.error(f"Error importing sklearn: {str(e)}")
+    st.stop()
 
 st.set_page_config(page_title="Pima Diabetes Classifier", layout="wide")
 
